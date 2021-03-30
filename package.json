@@ -1,0 +1,22 @@
+{
+  "name": "rsms-rwd",
+  "version": "1.0.0",
+  "description": "A Firefox extension that uses Responsive Web Design on the Rajagiri Student Management System. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thejus-Paul/RSMS-RWD.git"
+  },
+  "author": "Thejus Paul",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Thejus-Paul/RSMS-RWD/issues"
+  },
+  "homepage": "https://github.com/Thejus-Paul/RSMS-RWD#readme",
+  "dependencies": {
+    "web-ext": "^6.0.0"
+  }
+}
