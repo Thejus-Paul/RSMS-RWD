@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "RSMS RWD",
+  "description": "A Firefox extension that uses Responsive Web Design on the Rajagiri Student Management System.",
+  "version": "1.0",
+  "icons": {
+    "32": "icons/RSMS-RWD.svg",
+    "48": "icons/RSMS-RWD.svg",
+    "96": "icons/RSMS-RWD.svg"
+  },
+  "background": {
+    "scripts": ["background_script.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.rajagiritech.ac.in/stud/Parent/*"],
+      "js": ["content_script.js"]
+    }
+  ]
+}
