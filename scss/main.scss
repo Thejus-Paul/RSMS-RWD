@@ -79,6 +79,24 @@ body {
     }
 }
 
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 90%;
+    & a {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        margin-left: .5rem;
+        color: $secondary-color;
+        font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        text-decoration: none;
+    }
+}
+
 .attendance {
     @include flexCenter(row);
     flex-wrap: wrap;
@@ -100,4 +118,10 @@ body {
         
         font-weight: bold;
     }
+}
+.leave {
+    @include flexCenter(column);
+    flex-wrap: wrap;
+    margin: 1rem;
+    font-family: 'Roboto Slab',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
