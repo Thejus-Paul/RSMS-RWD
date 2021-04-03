@@ -34,20 +34,52 @@
 			let item = tdElements[i].textContent;
 			if(item != "") {
 				if(item in subjects) {
-					leaveData[date].push(subjects[item.textContent]);
+					leaveData[date].push(subjects[item]);
 				} else {
-					date = item.textContent;
+					date = item;
 					leaveData[date] = [];
 				}
 			}
 		}
-		return(leaveData);
+		return leaveData;
+	}
+
+	// To calculate subject-wise leave count
+	function subjectwiseLeaveCount(leaveData) {
+		let subjectwiseLeaveCount = {
+			"CCS": 0,
+			"DA": 0,
+			"CC": 0,
+			"OR": 0
+		};
+		for(let leaveDate in leaveData) {
+			for(let subject of leaveData[leaveDate]) {
+				subjectwiseLeaveCount[subject]++;
+			}
+		}
+		return(subjectwiseLeaveCount);
+	}
+
+	// To calculate the current attendance percentage and bunkable data
+	function calcAttendanceDetails(leaveCount) {
+		let totalClasses = {"CCS":6,"DA":6,"CC":6,"OR":6};
+		for(let subject in totalClasses) {
+			let percentage = (((totalClasses[subject] - leaveCount[subject]) / totalClasses[subject]) * 100).toFixed(3);
+			let bunkable = Math.floor(((0.25*totalClasses[subject]) - leaveCount[subject])/0.75)
+			console.log(subject,"Bunkable:",bunkable,"Percentage:",percentage);
+		}
 	}
 
 	if(window.location.href == "https://www.rajagiritech.ac.in/stud/KTU/Parent/Leave.asp?code=2021S8IT") {
 		let attendanceTable = document.getElementsByTagName('table');
 		let leaveData = generateLeaveData(attendanceTable);
-
+		if(Object.keys(leaveData).length === 0) {
+			console.log("Full Attendance!");
+		} else {
+			let leaveCount = subjectwiseLeaveCount(leaveData);
+			calcAttendanceDetails(leaveCount);
+		}
+		
 		removeExistingTags();
 	}
 	else if(window.location.href == "https://www.rajagiritech.ac.in/stud/KTU/Parent/Home.asp") {
